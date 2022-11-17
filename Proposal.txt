@@ -1,0 +1,22 @@
+This project will be a simple weather dashboard.
+
+PROPOSED USE: Adding in the uncertainty of each weather station to a forecast.
+
+weather-js will be used to pull live temperature data for a chosen city
+
+User can select their city of interest.
+
+Database data used is hourly weather data, and hourly weather predictions, for weather stations around Australia. Download can be found here:
+https://data.gov.au/data/dataset/rainfall-and-temperature-forecast-and-observations-hourly-verification-2016-05-to-2017-04
+
+There will be a visualisation of the max and minum temperature across the week, with some uncertainty based 
+	on the historical uncertainty of stations in your region.
+
+There will be a projection of the hourly temperature on that day, based on the historical hourly temp pattern for that day in your area.
+
+There will also be a map of the uncertainty in weather station temperature across the globe.
+
+The data processing and web scraping for this dashboard will be powered by Flask, Leaflet will be used for the mapping and Plotly for the charts
+As the dataset is very large and in a tabular format, it will be loading into an SQL dataset.
+If necessary, the jQuery and Underscore libraries will be used to make DOM manipulation and data processing easier.
+
