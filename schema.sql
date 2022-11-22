@@ -31,3 +31,5 @@ CREATE TABLE obs (
 
 
 ALTER TABLE obs ADD CONSTRAINT fk_station_number FOREIGN KEY(station_number) REFERENCES station_data(station_number);
+
+ALTER TABLE fcst ADD CONSTRAINT fk_station_number FOREIGN KEY(station_number) REFERENCES station_data(station_number);
