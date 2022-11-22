@@ -30,7 +30,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1>This is my test App</h1>"
+    return render_template('index.html')
 
 
 @app.route("/api/v1.0/stationdata")
