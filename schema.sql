@@ -11,6 +11,8 @@ CREATE TABLE station_data (
 	region VARCHAR
 );
 
+SELECT * FROM station_data;
+
 CREATE TABLE fcst (
 	date VARCHAR,
 	station_number INT,
@@ -19,6 +21,8 @@ CREATE TABLE fcst (
 	valid_end BIGINT,
 	temperature NUMERIC
 );
+
+SELECT * FROM fcst;
 
 CREATE TABLE obs (
 	date VARCHAR,
@@ -29,6 +33,7 @@ CREATE TABLE obs (
 	temperature NUMERIC
 );
 
+SELECT * FROM obs;
 
 ALTER TABLE obs ADD CONSTRAINT fk_station_number FOREIGN KEY(station_number) REFERENCES station_data(station_number);
 
