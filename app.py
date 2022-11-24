@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import random
-from flask import Flask, session, render_template, request
+from flask import Flask, session, render_template, request, jsonify
 from sqlalchemy import create_engine
 import datetime
 import config
@@ -36,7 +36,7 @@ def index():
 @app.route("/api/v1.0/stationdata")
 def stationdata():
     #Return JSON of station data table
-    return pd.read_sql("SELECT * FROM station_data", con=conn).to_json()
+    return jsonify(pd.read_sql("SELECT * FROM station_data", con=conn).to_json())
 
 @app.route("/api/v1.0/fcst")
 def fcst():
@@ -61,9 +61,12 @@ def weatherweekly():
     # Scrape page into Soup
     html = browser.html
     soup = bs(html, "html.parser")
+    return "script test"
 
 
 
+if __name__ == "__main__":
+    app.run(debug=True)
 
-    if __name__ == "__main__":
-        app.run(debug=True)
+
+#, methods=['GET'], strict_slashes=False
