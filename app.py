@@ -42,7 +42,7 @@ def stationdata():
 def fcst():
     return pd.read_sql("SELECT * FROM fcst", con=conn).to_json()
     #Return fcst data tables
-    return 
+
 @app.route("/api/v1.0/obs")
 def obs():
     #Return obs data tables

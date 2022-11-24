@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS station_data;
+DROP TABLE IF EXISTS station_data CASCADE;
 DROP TABLE IF EXISTS fcst;
 DROP TABLE IF EXISTS obs;
+DROP TABLE IF EXISTS variation;
 
 CREATE TABLE station_data (
 	station_number INT PRIMARY KEY,
@@ -19,7 +20,8 @@ CREATE TABLE fcst (
 	area_code VARCHAR,
 	valid_start BIGINT,
 	valid_end BIGINT,
-	temperature NUMERIC
+	temperature NUMERIC,
+    parameter VARCHAR
 );
 
 SELECT * FROM fcst;
@@ -33,7 +35,18 @@ CREATE TABLE obs (
 	temperature NUMERIC
 );
 
-SELECT * FROM obs;
+CREATE TABLE variation (
+	station_number INT PRIMARY KEY,
+	station_name VARCHAR,
+	station_difference INT,
+	lat NUMERIC,
+	lon NUMERIC,
+    height NUMERIC,
+    region VARCHAR
+);	
+
+
+ALTER TABLE variation ADD CONSTRAINT fk_station_number FOREIGN KEY(station_number) REFERENCES station_data(station_number);
 
 ALTER TABLE obs ADD CONSTRAINT fk_station_number FOREIGN KEY(station_number) REFERENCES station_data(station_number);
 
