@@ -54,22 +54,6 @@ def var():
     return pd.read_sql("SELECT * FROM variation", con=conn).to_json() 
 
 
-@app.route("/api/v1.0/weatherweekly")
-def weatherweekly():
-     # Set up Splinter
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-
-    # Visit visitcostarica.herokuapp.com
-    url = "http://www.bom.gov.au/"
-    browser.visit(url)
-
-    # Scrape page into Soup
-    html = browser.html
-    soup = bs(html, "html.parser")
-    return "script test"
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)

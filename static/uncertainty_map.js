@@ -54,4 +54,5 @@ let positionsMap = L.map("positions_map", {
       max: 1
     }).addTo(positionsMap);
 
+
   });

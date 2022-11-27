@@ -6,6 +6,7 @@
   <title>Weather app</title>
 
  <!-- Connect to Weather.js Library -->
+ 
 
   <script src="static/weather.min.js"></script>
 
@@ -36,20 +37,45 @@
   <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 
+
 <body>
+
   <!-- The div where we'll insert our map -->
 
-      <div id="positions_map"></div>
+      <div style='
+    	  width: 900px;
+        height: 800px;
+        padding: 5px; 
+        font: 15px Calibri;'
+        onclick='getStyle(this)'>
+
+        <div id="positions_map"></div>
     
+      <div style='
+      width:900px;
+      height:700px;
+      padding: 5px; 
+      font: 15px Calibri;'
+      onclick='getStyle(this)'>
+
       <div id="uncertainty_map"></div>
 
+    
 
     <div id="histogram"></div>
-
+  </div>
 
   <!-- JavaScript file -->
   <script type="text/javascript" src="static/weathermap.js"></script>
   <script type="text/javascript" src="static/uncertainty_map.js"></script>
+  
 </body>
+
+<script>
+  function getStyle(ele) {
+        alert('width:' + ele.style.width + ' height: ' + ele.style.height);
+    }
+  
+  </script>
 
 </html>
