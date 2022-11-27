@@ -17,13 +17,29 @@ let positionsMap = L.map("positions_map", {
   }).addTo(positionsMap);
   
   let url = "/api/v1.0/var";
-
+  let init = true;
   let uncertainties = [];
   let heatArray = [];
   let positionsArray = [];
   let markers = L.markerClusterGroup();
-
+  let jsonResult;
+  
   d3.json(url).then(function(response) {
+    jsonResult = response;
+    //Initialise Dropdown
+    let dropdown = d3.select("#selDataset");
+    if(init) {
+        let dropdownText = '<option value="All">All</option>';
+        let distinctStates = [...new Set(Object.values(response.region))]; 
+        for(let j = 0; j < distinctStates.length; j++){
+            dropdownText +=  '<option value="' + distinctStates[j] + '">' + distinctStates[j] + '</option>';
+        }
+        console.log(dropdownText);
+        dropdown.html(dropdownText);
+    }
+
+
+
     console.log(response);
     console.log(response.lat.length);
     for(let i = 0; i < Object.keys(response.lat).length; i++) {
@@ -53,6 +69,46 @@ let positionsMap = L.map("positions_map", {
       radius: 40,
       max: 1
     }).addTo(positionsMap);
+    
+    //Histogram
+    var trace = {
+      x: uncertainties,
+      type: 'histogram'
+    };
 
-
+    var layout = {title: 'Mean Difference From Observed Temp',
+  xaxis:{title: "Mean Difference (Degrees Celcius"},
+  yaxis:{title: "Count Of Stations"}}
+    Plotly.newPlot('histogram',[trace],layout)
   });
+
+
+
+  
+function optionChanged(state){
+  jsonResult = jsonResult;
+
+
+  let uncertainties = [];
+  for(let i = 0; i < Object.keys(jsonResult.lat).length; i++) {
+    if(jsonResult.region[i] == state || state == "All"){
+      uncertainties.push(jsonResult.station_difference[i]);
+
+    }
+
+  }
+
+      //Histogram
+      var trace = {
+        x: uncertainties,
+        type: 'histogram'
+      };
+  
+      var layout = {title: 'Mean Difference From Observed Temp',
+    xaxis:{title: "Mean Difference (Degrees Celcius"},
+    yaxis:{title: "Count Of Stations"}}
+      Plotly.newPlot('histogram',[trace],layout)
+
+
+
+}
