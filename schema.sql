@@ -38,7 +38,7 @@ CREATE TABLE obs (
 CREATE TABLE variation (
 	station_number INT PRIMARY KEY,
 	station_name VARCHAR,
-	station_difference INT,
+	station_difference NUMERIC,
 	lat NUMERIC,
 	lon NUMERIC,
     height NUMERIC,

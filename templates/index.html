@@ -18,6 +18,12 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
+  <script src="static/leaflet-heat.js"></script>
+
+  <!-- Marker cluster CSS -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+  <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
 
   <!-- D3 Library -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -32,9 +38,14 @@
 
 <body>
   <!-- The div where we'll insert our map -->
-  <div id="map"></div>
 
-  <div id="uncertainty_map"></div>
+      <div id="positions_map"></div>
+    
+      <div id="uncertainty_map"></div>
+
+
+    <div id="histogram"></div>
+
 
   <!-- JavaScript file -->
   <script type="text/javascript" src="static/weathermap.js"></script>

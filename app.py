@@ -48,6 +48,12 @@ def obs():
     #Return obs data tables
     return pd.read_sql("SELECT * FROM obs", con=conn).to_json() 
 
+@app.route("/api/v1.0/var")
+def var():
+    #Return obs data tables
+    return pd.read_sql("SELECT * FROM variation", con=conn).to_json() 
+
+
 @app.route("/api/v1.0/weatherweekly")
 def weatherweekly():
      # Set up Splinter
